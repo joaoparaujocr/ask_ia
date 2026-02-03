@@ -1,12 +1,11 @@
 import uvicorn
 
 from fastapi import FastAPI
+from routes.api.question_and_answer import router as question_and_answer
 
 app = FastAPI()
 
-@app.get("/")
-async def root():
-    return "Root"
+app.include_router(question_and_answer)
 
 def main():
     uvicorn.run(
